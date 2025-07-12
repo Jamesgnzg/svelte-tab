@@ -2,23 +2,28 @@
   import Tab1 from './lib/Tab1.svelte';
   import TabCont from './lib/TabCont.svelte';
   import type { TabItems } from './interface/TabItems';
+  import type { Component } from 'svelte';
 
-  let activeTab: Number = $state(1);
-
-  const tabItems:TabItems[] = [
+   const tabItems:TabItems[] = [
     {
       title: "Tab1",
-      value: 1,
+      value: 0,
       content: Tab1,
     },
     {
       title: "TabCont",
-      value: 2,
+      value: 1,
       content: TabCont,
     }
   ]
 
-  const setActiveTab = (tabValue: Number) => () => { activeTab = tabValue };
+  let activeTab: Number = $state(1);
+  let ActiveContent: Component = $state(tabItems[0].content);
+
+  const setActiveTab = (tabValue: number) => () => { 
+    activeTab = tabValue
+    ActiveContent = tabItems[tabValue].content;
+  };
 </script>
 
 <main class="p-5">
@@ -35,7 +40,7 @@
 
     {#each tabItems as item}
       {#if activeTab == item.value}
-        <svelte:component this={item.content} />
+        <ActiveContent />
       {/if}
     {/each}
 </main>
