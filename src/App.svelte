@@ -38,9 +38,5 @@
     {/each}
   </ul>
 
-    {#each tabItems as item}
-      {#if activeTab == item.value}
-        <ActiveContent />
-      {/if}
-    {/each}
+  <ActiveContent />
 </main>
