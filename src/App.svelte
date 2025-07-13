@@ -7,12 +7,12 @@
    const tabItems:TabItems[] = [
     {
       title: "Tab1",
-      value: 0,
+      value: 1,
       content: Tab1,
     },
     {
       title: "TabCont",
-      value: 1,
+      value: 2,
       content: TabCont,
     }
   ]
@@ -20,9 +20,13 @@
   let activeTab: Number = $state(1);
   let ActiveContent: Component = $state(tabItems[0].content);
 
-  const setActiveTab = (tabValue: number) => () => { 
-    activeTab = tabValue
-    ActiveContent = tabItems[tabValue].content;
+  const setActiveTab = (tabValue: number) => () => {
+    const selectedTab: TabItems | undefined = tabItems.find((item) => {
+      return item.value === tabValue;
+    });
+    
+    activeTab = selectedTab?.value ?? 0;
+    ActiveContent = selectedTab?.content ?? tabItems[0].content;
   };
 </script>
 
@@ -37,6 +41,5 @@
       </li>
     {/each}
   </ul>
-
   <ActiveContent />
 </main>
