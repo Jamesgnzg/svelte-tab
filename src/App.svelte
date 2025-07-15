@@ -41,7 +41,7 @@
       </li>
     {/each}
   </ul>
-  <div class="p-5 border rounded-md border-t-0 border-[#dee2e6] min-h-screen">
+  <div class="p-5 min-h-screen">
       <ActiveContent />
   </div>
 </main>
