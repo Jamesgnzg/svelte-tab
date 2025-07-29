@@ -35,7 +35,7 @@
     {#each tabItems as items}
       <li class={activeTab === items.value ? `border rounded-md border-b-white border-[#dee2e6] bg-white text-[#495057] -mb-[1px]` : ''}>
         <!-- svelte-ignore a11y_click_events_have_key_events -->
-        <span class={`p-4 cursor-pointer block border border-transparent rounded-md ${activeTab !== items.value ? `hover:border-[#dee2e6] hover:border-b-white` : ''}`} onclick={setActiveTab(items.value)} role="button" tabindex={items.value} aria-label={items.title}>
+        <span class={`p-4 cursor-pointer block border border-transparent rounded-md ${activeTab == items.value && `hover:border-[#dee2e6] hover:border-b-white`}`} onclick={setActiveTab(items.value)} role="button" tabindex={items.value} aria-label={items.title}>
           {items.title}
         </span>
       </li>
